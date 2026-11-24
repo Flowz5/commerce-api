@@ -28,10 +28,6 @@ class Product
     #[ORM\Column]
     private bool $active = true;
 
-    // Prix d'achat au fournisseur : donnée commerciale interne (absente du modèle Boutique, ajoutée pour l'API).
-    #[ORM\Column(nullable: true)]
-    private ?float $purchasePrice = null;
-
     #[ORM\ManyToOne]
     private ?Category $category = null;
 
@@ -99,18 +95,6 @@ class Product
     public function setActive(bool $active): static
     {
         $this->active = $active;
-
-        return $this;
-    }
-
-    public function getPurchasePrice(): ?float
-    {
-        return $this->purchasePrice;
-    }
-
-    public function setPurchasePrice(?float $purchasePrice): static
-    {
-        $this->purchasePrice = $purchasePrice;
 
         return $this;
     }
